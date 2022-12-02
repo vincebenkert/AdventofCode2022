@@ -1,0 +1,43 @@
+// Import input from adventofcode....
+//Input
+fs = require('fs')
+let input = fs.readFileSync('/adventofcode/2022/day1/input.txt', 'utf8');
+let inputArray = input.split("\n");
+
+//console.log(inputArray);
+let elfCurrent = 0;
+let elfMax = 0;
+let elfOne = 0;
+let elfTwo = 0;
+let elfThree = 0;
+
+
+for(let i=0;i<inputArray.length;i++){
+
+    elfCurrent += Number(inputArray[i]);
+
+
+    if(inputArray[i] == ''){
+
+        if(elfCurrent > elfOne && elfOne <= elfTwo && elfOne <= elfThree){
+            elfOne = elfCurrent;
+            elfCurrent = 0;
+        }
+        else if(elfCurrent > elfTwo && elfTwo <= elfOne && elfTwo <= elfThree){
+            elfTwo = elfCurrent;
+            elfCurrent = 0; 
+        }
+        else if(elfCurrent > elfThree && elfThree <= elfOne && elfThree <= elfTwo){
+            elfThree = elfCurrent;
+            elfCurrent = 0;
+        }
+        elfCurrent = 0;
+    }
+
+    console.log("ElfOne = " + elfOne + " ElfTwo = " + elfTwo +  " ElfThree = " + elfThree);
+}
+
+
+elfMax = elfOne + elfTwo + elfThree;
+
+console.log(elfMax);
