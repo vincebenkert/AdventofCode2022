@@ -16,7 +16,7 @@ for(i=0;i<inputArray[0].length;i++)
         for(z=y+1;z<message.length;z++){
             if(message.charAt(y) == message.charAt(z)){
                 duplicate = true;
-                y = z;
+                y = z; //skip some iterations because you can...
                 break;
             }
             if((y == msglength-2) && (z == msglength-1))
